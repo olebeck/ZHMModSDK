@@ -19,16 +19,3 @@ index 82d932f0..5250219f 100644
          WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}/Src/Shaders"
          USES_TERMINAL)
  endif()
-diff --git a/Src/Shaders/CompileShaders.cmd b/Src/Shaders/CompileShaders.cmd
-index 24c68a43..1e1f22f3 100644
---- a/Src/Shaders/CompileShaders.cmd
-+++ b/Src/Shaders/CompileShaders.cmd
-@@ -283,7 +283,7 @@ if %error% == 0 (
-     echo Shaders compiled ok
- ) else (
-     echo There were shader compilation errors!
--    exit /b 1
-+    exit /b 0
- )
- 
- endlocal
