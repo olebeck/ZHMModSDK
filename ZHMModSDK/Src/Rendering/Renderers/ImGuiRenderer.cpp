@@ -25,6 +25,11 @@
 #include "ModSDK.h"
 #include "Glacier/ZRender.h"
 
+#ifdef __MINGW32__
+#define D3D_SET_OBJECT_NAME_N_A(pObject, Chars, pName) (pObject)->SetPrivateData(WKPDID_D3DDebugObjectName, Chars, pName)
+#define D3D_SET_OBJECT_NAME_A(pObject, pName) D3D_SET_OBJECT_NAME_N_A(pObject, lstrlenA(pName), pName)
+#endif
+
 using namespace Rendering::Renderers;
 
 ImGuiRenderer::ImGuiRenderer()

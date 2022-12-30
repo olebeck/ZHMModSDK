@@ -2,6 +2,7 @@
 
 #include <d3dcompiler.h>
 #include <dxgi1_4.h>
+#include <d3d12.h>
 
 #include "Hooks.h"
 #include "Logging.h"
@@ -24,6 +25,13 @@
 #include "Fonts.h"
 #include "ModSDK.h"
 #include "Glacier/ZGameLoopManager.h"
+
+#ifdef __MINGW32__
+#define D3D12_MIN_DEPTH (0.0f)
+#define D3D12_MAX_DEPTH (1.0f)
+#define D3D_SET_OBJECT_NAME_N_A(pObject, Chars, pName) (pObject)->SetPrivateData(WKPDID_D3DDebugObjectName, Chars, pName)
+#define D3D_SET_OBJECT_NAME_A(pObject, pName) D3D_SET_OBJECT_NAME_N_A(pObject, lstrlenA(pName), pName)
+#endif
 
 using namespace Rendering::Renderers;
 
@@ -94,8 +102,8 @@ void DirectXTKRenderer::OnPresent(IDXGISwapChain3* p_SwapChain)
 		const auto s_ViewMatrix = s_CurrentCamera->GetViewMatrix();
 		const SMatrix s_ProjectionMatrix = *s_CurrentCamera->GetProjectionMatrix();
 
-		m_View = *reinterpret_cast<DirectX::FXMMATRIX*>(&s_ViewMatrix);
-		m_Projection = *reinterpret_cast<DirectX::FXMMATRIX*>(&s_ProjectionMatrix);
+		m_View = reinterpret_cast<DirectX::FXMMATRIX>(s_ViewMatrix);
+		m_Projection = reinterpret_cast<DirectX::FXMMATRIX>(s_ProjectionMatrix);
 
 		m_ViewProjection = m_View * m_Projection;
 		m_ProjectionViewInverse = (m_Projection * m_View).Invert();
@@ -535,9 +543,9 @@ bool DirectXTKRenderer::ScreenToWorld(const SVector2& p_ScreenPos, SVector3& p_W
 	DirectX::SimpleMath::Vector4 s_RayWorld = DirectX::XMVector4Transform(s_RayEye, m_View.Invert());
 	s_RayWorld.Normalize();
 
-	p_WorldPosOut.x = s_CameraTrans.Trans.x + s_RayWorld.x;
-	p_WorldPosOut.y = s_CameraTrans.Trans.y + s_RayWorld.y;
-	p_WorldPosOut.z = s_CameraTrans.Trans.z + s_RayWorld.z;
+	p_WorldPosOut.x = s_CameraTrans.axes.Trans.x + s_RayWorld.x;
+	p_WorldPosOut.y = s_CameraTrans.axes.Trans.y + s_RayWorld.y;
+	p_WorldPosOut.z = s_CameraTrans.axes.Trans.z + s_RayWorld.z;
 
 	p_DirectionOut.x = s_RayWorld.x;
 	p_DirectionOut.y = s_RayWorld.y;
@@ -583,7 +591,7 @@ inline SVector3 XMVecToSVec3(const DirectX::XMVECTOR& p_Vec)
 
 void DirectXTKRenderer::DrawOBB3D(const SVector3& p_Min, const SVector3& p_Max, const SMatrix& p_Transform, const SVector4& p_Color)
 {
-	const auto s_Transform = *reinterpret_cast<DirectX::FXMMATRIX*>(&p_Transform);
+	const auto s_Transform = reinterpret_cast<DirectX::FXMMATRIX>(p_Transform);
 
 	DirectX::XMVECTOR s_Corners[] = {
 		DirectX::XMVector3Transform(DirectX::SimpleMath::Vector3(p_Min.x, p_Min.y, p_Min.z), s_Transform),

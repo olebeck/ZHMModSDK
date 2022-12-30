@@ -211,7 +211,7 @@ protected:
 
 		// Install the detour.
 		void* s_Original = nullptr;
-		auto s_Result = MH_CreateHook(m_Target, p_Detour, &s_Original);
+		auto s_Result = MH_CreateHook(m_Target, (void*)p_Detour, &s_Original);
 
 		if (s_Result != MH_OK)
 		{
@@ -227,7 +227,7 @@ protected:
 			return;
 		}
 
-		this->m_OriginalFunc = reinterpret_cast<typename Hook<ReturnType(Args...)>::OriginalFunc_t>(s_Original);
+		this->m_OriginalFunc = (void*)reinterpret_cast<typename Hook<ReturnType(Args...)>::OriginalFunc_t>(s_Original);
 
 		Logger::Debug("Successfully installed detour for hook '{}' at address {}.", p_HookName, fmt::ptr(p_Target));
 	}
@@ -267,7 +267,7 @@ public:
 			MH_DisableHook(m_Target);
 			MH_RemoveHook(m_Target);
 			
-			this->m_OriginalFunc = reinterpret_cast<typename Hook<ReturnType(Args...)>::OriginalFunc_t>(m_Target);
+			this->m_OriginalFunc = (void*)reinterpret_cast<typename Hook<ReturnType(Args...)>::OriginalFunc_t>(m_Target);
 		}
 
 		m_Target = nullptr;

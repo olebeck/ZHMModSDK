@@ -79,12 +79,12 @@ public:
 
 	void AddDetour(void* p_Context, DetourFunc_t p_Detour)
 	{
-		AddDetourInternal(p_Context, p_Detour);
+		AddDetourInternal(p_Context, (void*)p_Detour);
 	}
 
 	void RemoveDetour(DetourFunc_t p_Detour)
 	{
-		RemoveDetourInternal(p_Detour);
+		RemoveDetourInternal((void*)p_Detour);
 	}
 
 	ReturnType Call(Args... p_Args)
@@ -132,12 +132,12 @@ public:
 
 	void AddDetour(void* p_Context, DetourFunc_t p_Detour)
 	{
-		AddDetourInternal(p_Context, p_Detour);
+		AddDetourInternal(p_Context, (void*)p_Detour);
 	}
 
 	void RemoveDetour(DetourFunc_t p_Detour)
 	{
-		RemoveDetourInternal(p_Detour);
+		RemoveDetourInternal((void*)p_Detour);
 	}
 
 	void Call(Args... p_Args)

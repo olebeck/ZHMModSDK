@@ -1,0 +1,1 @@
+#include "xaudio2Redist.h"

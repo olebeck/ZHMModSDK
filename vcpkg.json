@@ -2,8 +2,14 @@
   "name": "zhmmodsdk",
   "dependencies": [
     "directx-headers",
-    "directx-dxc",
+    {
+      "name": "directx-dxc",
+      "host": true
+    },
     "directxmath",
-    "xaudio2redist"
+    "xaudio2redist",
+    "websocketpp",
+    "nlohmann-json",
+    "asio"
   ]
 }

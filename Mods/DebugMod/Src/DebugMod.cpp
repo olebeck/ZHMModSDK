@@ -249,7 +249,7 @@ void DebugMod::OnDrawUI(bool p_HasFocus)
 
 				ImGuizmo::SetRect(0, 0, s_ImgGuiIO.DisplaySize.x, s_ImgGuiIO.DisplaySize.y);
 
-				if (ImGuizmo::Manipulate(&s_ViewMatrix.XAxis.x, &s_ProjectionMatrix.XAxis.x, m_GizmoMode, m_GizmoSpace, &s_ModelMatrix.XAxis.x, NULL, m_useSnap ? &m_SnapValue[0] : NULL))
+				if (ImGuizmo::Manipulate(&s_ViewMatrix.axes.XAxis.x, &s_ProjectionMatrix.axes.XAxis.x, m_GizmoMode, m_GizmoSpace, &s_ModelMatrix.axes.XAxis.x, NULL, m_useSnap ? &m_SnapValue[0] : NULL))
 				{
 					s_SpatialEntity->SetWorldMatrix(s_ModelMatrix);
 
@@ -428,10 +428,10 @@ void DebugMod::DrawPositionBox(bool p_HasFocus)
 		{
 			CopyToClipboard(fmt::format(
 				"{{\"XAxis\":{{\"x\":{},\"y\":{},\"z\":{}}},\"YAxis\":{{\"x\":{},\"y\":{},\"z\":{}}},\"ZAxis\":{{\"x\":{},\"y\":{},\"z\":{}}},\"Trans\":{{\"x\":{},\"y\":{},\"z\":{}}}}}",
-				s_HitmanTrans.XAxis.x, s_HitmanTrans.XAxis.y, s_HitmanTrans.XAxis.z,
-				s_HitmanTrans.YAxis.x, s_HitmanTrans.YAxis.y, s_HitmanTrans.YAxis.z,
-				s_HitmanTrans.ZAxis.x, s_HitmanTrans.ZAxis.y, s_HitmanTrans.ZAxis.z,
-				s_HitmanTrans.Trans.x, s_HitmanTrans.Trans.y, s_HitmanTrans.Trans.z
+				s_HitmanTrans.axes.XAxis.x, s_HitmanTrans.axes.XAxis.y, s_HitmanTrans.axes.XAxis.z,
+				s_HitmanTrans.axes.YAxis.x, s_HitmanTrans.axes.YAxis.y, s_HitmanTrans.axes.YAxis.z,
+				s_HitmanTrans.axes.ZAxis.x, s_HitmanTrans.axes.ZAxis.y, s_HitmanTrans.axes.ZAxis.z,
+				s_HitmanTrans.axes.Trans.x, s_HitmanTrans.axes.Trans.y, s_HitmanTrans.axes.Trans.z
 			));
 		}
 
@@ -442,20 +442,20 @@ void DebugMod::DrawPositionBox(bool p_HasFocus)
 			// This is adapted from QN: https://github.com/atampy25/quickentity-rs/blob/b94dbab32c91ccd0e1612a2e5dda8fb83eb2a8e9/src/lib.rs#L243
 			constexpr double c_RAD2DEG = 180.0 / std::numbers::pi;
 
-			double s_RotationX = abs(s_HitmanTrans.XAxis.z) < 0.9999999f
-				? atan2f(-s_HitmanTrans.YAxis.z, s_HitmanTrans.ZAxis.z) * c_RAD2DEG
-				: atan2f(s_HitmanTrans.ZAxis.y, s_HitmanTrans.YAxis.y) * c_RAD2DEG;
+			double s_RotationX = abs(s_HitmanTrans.axes.XAxis.z) < 0.9999999f
+				? atan2f(-s_HitmanTrans.axes.YAxis.z, s_HitmanTrans.axes.ZAxis.z) * c_RAD2DEG
+				: atan2f(s_HitmanTrans.axes.ZAxis.y, s_HitmanTrans.axes.YAxis.y) * c_RAD2DEG;
 
-			double s_RotationY = asinf(min(max(-1.f, s_HitmanTrans.XAxis.z), 1.f)) * c_RAD2DEG;
+			double s_RotationY = asinf(std::min(std::max(-1.f, s_HitmanTrans.axes.XAxis.z), 1.f)) * c_RAD2DEG;
 
-			double s_RotationZ = abs(s_HitmanTrans.XAxis.z) < 0.9999999f
-				? atan2f(-s_HitmanTrans.XAxis.y, s_HitmanTrans.XAxis.x) * c_RAD2DEG
+			double s_RotationZ = abs(s_HitmanTrans.axes.XAxis.z) < 0.9999999f
+				? atan2f(-s_HitmanTrans.axes.XAxis.y, s_HitmanTrans.axes.XAxis.x) * c_RAD2DEG
 				: 0.f;
 
 			CopyToClipboard(fmt::format(
 				"{{\"rotation\":{{\"x\":{},\"y\":{},\"z\":{}}},\"position\":{{\"x\":{},\"y\":{},\"z\":{}}}}}",
 				s_RotationX, s_RotationY, s_RotationZ,
-				s_HitmanTrans.Trans.x, s_HitmanTrans.Trans.y, s_HitmanTrans.Trans.z
+				s_HitmanTrans.axes.Trans.x, s_HitmanTrans.axes.Trans.y, s_HitmanTrans.axes.Trans.z
 			));
 		}
 
@@ -470,10 +470,10 @@ void DebugMod::DrawPositionBox(bool p_HasFocus)
 		{
 			CopyToClipboard(fmt::format(
 				"{{\"XAxis\":{{\"x\":{},\"y\":{},\"z\":{}}},\"YAxis\":{{\"x\":{},\"y\":{},\"z\":{}}},\"ZAxis\":{{\"x\":{},\"y\":{},\"z\":{}}},\"Trans\":{{\"x\":{},\"y\":{},\"z\":{}}}}}",
-				s_CameraTrans.XAxis.x, s_CameraTrans.XAxis.y, s_CameraTrans.XAxis.z,
-				s_CameraTrans.YAxis.x, s_CameraTrans.YAxis.y, s_CameraTrans.YAxis.z,
-				s_CameraTrans.ZAxis.x, s_CameraTrans.ZAxis.y, s_CameraTrans.ZAxis.z,
-				s_CameraTrans.Trans.x, s_CameraTrans.Trans.y, s_CameraTrans.Trans.z
+				s_CameraTrans.axes.XAxis.x, s_CameraTrans.axes.XAxis.y, s_CameraTrans.axes.XAxis.z,
+				s_CameraTrans.axes.YAxis.x, s_CameraTrans.axes.YAxis.y, s_CameraTrans.axes.YAxis.z,
+				s_CameraTrans.axes.ZAxis.x, s_CameraTrans.axes.ZAxis.y, s_CameraTrans.axes.ZAxis.z,
+				s_CameraTrans.axes.Trans.x, s_CameraTrans.axes.Trans.y, s_CameraTrans.axes.Trans.z
 			));
 		}
 
@@ -484,20 +484,20 @@ void DebugMod::DrawPositionBox(bool p_HasFocus)
 			// This is adapted from QN: https://github.com/atampy25/quickentity-rs/blob/b94dbab32c91ccd0e1612a2e5dda8fb83eb2a8e9/src/lib.rs#L243
 			constexpr double c_RAD2DEG = 180.0 / std::numbers::pi;
 
-			double s_RotationX = abs(s_CameraTrans.XAxis.z) < 0.9999999f
-				? atan2f(-s_CameraTrans.YAxis.z, s_CameraTrans.ZAxis.z) * c_RAD2DEG
-				: atan2f(s_CameraTrans.ZAxis.y, s_CameraTrans.YAxis.y) * c_RAD2DEG;
+			double s_RotationX = abs(s_CameraTrans.axes.XAxis.z) < 0.9999999f
+				? atan2f(-s_CameraTrans.axes.YAxis.z, s_CameraTrans.axes.ZAxis.z) * c_RAD2DEG
+				: atan2f(s_CameraTrans.axes.ZAxis.y, s_CameraTrans.axes.YAxis.y) * c_RAD2DEG;
 
-			double s_RotationY = asinf(min(max(-1.f, s_CameraTrans.XAxis.z), 1.f)) * c_RAD2DEG;
+			double s_RotationY = asinf(std::min(std::max(-1.f, s_CameraTrans.axes.XAxis.z), 1.f)) * c_RAD2DEG;
 
-			double s_RotationZ = abs(s_CameraTrans.XAxis.z) < 0.9999999f
-				? atan2f(-s_CameraTrans.XAxis.y, s_CameraTrans.XAxis.x) * c_RAD2DEG
+			double s_RotationZ = abs(s_CameraTrans.axes.XAxis.z) < 0.9999999f
+				? atan2f(-s_CameraTrans.axes.XAxis.y, s_CameraTrans.axes.XAxis.x) * c_RAD2DEG
 				: 0.f;
 
 			CopyToClipboard(fmt::format(
 				"{{\"rotation\":{{\"x\":{},\"y\":{},\"z\":{}}},\"position\":{{\"x\":{},\"y\":{},\"z\":{}}}}}",
 				s_RotationX, s_RotationY, s_RotationZ,
-				s_CameraTrans.Trans.x, s_CameraTrans.Trans.y, s_CameraTrans.Trans.z
+				s_CameraTrans.axes.Trans.x, s_CameraTrans.axes.Trans.y, s_CameraTrans.axes.Trans.z
 			));
 		}
 		
@@ -612,10 +612,10 @@ void DebugMod::DrawEntityBox(bool p_HasFocus)
 				{
 					CopyToClipboard(fmt::format(
 						"{{\"XAxis\":{{\"x\":{},\"y\":{},\"z\":{}}},\"YAxis\":{{\"x\":{},\"y\":{},\"z\":{}}},\"ZAxis\":{{\"x\":{},\"y\":{},\"z\":{}}},\"Trans\":{{\"x\":{},\"y\":{},\"z\":{}}}}}",
-						s_Trans.XAxis.x, s_Trans.XAxis.y, s_Trans.XAxis.z,
-						s_Trans.YAxis.x, s_Trans.YAxis.y, s_Trans.YAxis.z,
-						s_Trans.ZAxis.x, s_Trans.ZAxis.y, s_Trans.ZAxis.z,
-						s_Trans.Trans.x, s_Trans.Trans.y, s_Trans.Trans.z
+						s_Trans.axes.XAxis.x, s_Trans.axes.XAxis.y, s_Trans.axes.XAxis.z,
+						s_Trans.axes.YAxis.x, s_Trans.axes.YAxis.y, s_Trans.axes.YAxis.z,
+						s_Trans.axes.ZAxis.x, s_Trans.axes.ZAxis.y, s_Trans.axes.ZAxis.z,
+						s_Trans.axes.Trans.x, s_Trans.axes.Trans.y, s_Trans.axes.Trans.z
 					));
 				}
 
@@ -626,20 +626,20 @@ void DebugMod::DrawEntityBox(bool p_HasFocus)
 					// This is adapted from QN: https://github.com/atampy25/quickentity-rs/blob/b94dbab32c91ccd0e1612a2e5dda8fb83eb2a8e9/src/lib.rs#L243
 					constexpr double c_RAD2DEG = 180.0 / std::numbers::pi;
 
-					double s_RotationX = abs(s_Trans.XAxis.z) < 0.9999999f
-						? atan2f(-s_Trans.YAxis.z, s_Trans.ZAxis.z) * c_RAD2DEG
-						: atan2f(s_Trans.ZAxis.y, s_Trans.YAxis.y) * c_RAD2DEG;
+					double s_RotationX = abs(s_Trans.axes.XAxis.z) < 0.9999999f
+						? atan2f(-s_Trans.axes.YAxis.z, s_Trans.axes.ZAxis.z) * c_RAD2DEG
+						: atan2f(s_Trans.axes.ZAxis.y, s_Trans.axes.YAxis.y) * c_RAD2DEG;
 
-					double s_RotationY = asinf(min(max(-1.f, s_Trans.XAxis.z), 1.f)) * c_RAD2DEG;
+					double s_RotationY = asinf(std::min(std::max(-1.f, s_Trans.axes.XAxis.z), 1.f)) * c_RAD2DEG;
 
-					double s_RotationZ = abs(s_Trans.XAxis.z) < 0.9999999f
-						? atan2f(-s_Trans.XAxis.y, s_Trans.XAxis.x) * c_RAD2DEG
+					double s_RotationZ = abs(s_Trans.axes.XAxis.z) < 0.9999999f
+						? atan2f(-s_Trans.axes.XAxis.y, s_Trans.axes.XAxis.x) * c_RAD2DEG
 						: 0.f;
 
 					CopyToClipboard(fmt::format(
 						"{{\"rotation\":{{\"x\":{},\"y\":{},\"z\":{}}},\"position\":{{\"x\":{},\"y\":{},\"z\":{}}}}}",
 						s_RotationX, s_RotationY, s_RotationZ,
-						s_Trans.Trans.x, s_Trans.Trans.y, s_Trans.Trans.z
+						s_Trans.axes.Trans.x, s_Trans.axes.Trans.y, s_Trans.axes.Trans.z
 					));
 				}
 

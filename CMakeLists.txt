@@ -6,6 +6,10 @@ endif()
 
 project(ZHMMods CXX)
 
+if(MINGW) # fixups for case sensitive fs
+include_directories(${CMAKE_CURRENT_LIST_DIR}/_inc)
+endif()
+
 set(CTT OFF CACHE BOOL "Build with support for the Hitman 3 CTT.")
 set(INSTALL_PATH "" CACHE PATH "Path to Hitman 3 retail folder to install the SDK in.")
 
@@ -22,7 +26,7 @@ endif()
 add_subdirectory("External/spdlog")
 add_subdirectory("External/minhook")
 add_subdirectory("External/imgui")
-add_subdirectory("External/imguizmo")
+add_subdirectory("External/ImGuizmo")
 add_subdirectory("External/DirectXTK12")
 
 # Core modules.

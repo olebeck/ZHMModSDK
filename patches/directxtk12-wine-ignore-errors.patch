@@ -1,0 +1,34 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 82d932f0..5250219f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -213,12 +213,15 @@ if (NOT USE_PREBUILT_SHADERS)
+           REQUIRED NO_SYSTEM_ENVIRONMENT_PATH NO_CMAKE_SYSTEM_PATH NO_DEFAULT_PATH
+           HINTS ${DIRECTX_DXC_PATH})
+     endif()
++    if(MINGW)
++    set(WINE_IF_MINGW wine)
++    endif()
+     add_custom_command(
+         OUTPUT "${COMPILED_SHADERS}/SpriteEffect_SpriteVertexShader.inc"
+         MAIN_DEPENDENCY "${PROJECT_SOURCE_DIR}/Src/Shaders/CompileShaders.cmd"
+         DEPENDS ${SHADER_SOURCES}
+         COMMENT "Generating HLSL shaders..."
+-        COMMAND ${CMAKE_COMMAND} -E env CompileShadersOutput="${COMPILED_SHADERS}" $<$<BOOL:${DIRECTX_DXC_TOOL}>:DirectXShaderCompiler=${DIRECTX_DXC_TOOL}> CompileShaders.cmd ARGS ${ShaderOpts} > "${COMPILED_SHADERS}/compileshaders.log"
++        COMMAND ${CMAKE_COMMAND} -E env CompileShadersOutput="${COMPILED_SHADERS}" $<$<BOOL:${DIRECTX_DXC_TOOL}>:DirectXShaderCompiler=${DIRECTX_DXC_TOOL}> ${WINE_IF_MINGW} CompileShaders.cmd ARGS ${ShaderOpts} > "${COMPILED_SHADERS}/compileshaders.log"
+         WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}/Src/Shaders"
+         USES_TERMINAL)
+ endif()
+diff --git a/Src/Shaders/CompileShaders.cmd b/Src/Shaders/CompileShaders.cmd
+index 24c68a43..1e1f22f3 100644
+--- a/Src/Shaders/CompileShaders.cmd
++++ b/Src/Shaders/CompileShaders.cmd
+@@ -283,7 +283,7 @@ if %error% == 0 (
+     echo Shaders compiled ok
+ ) else (
+     echo There were shader compilation errors!
+-    exit /b 1
++    exit /b 0
+ )
+ 
+ endlocal

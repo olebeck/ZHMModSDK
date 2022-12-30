@@ -189,51 +189,55 @@ inline std::ostream& operator<<(std::ostream& p_Stream, const float4& p_Value)
 	return p_Stream << "(" << p_Value.x << ", " << p_Value.y << ", " << p_Value.z << ", " << p_Value.w << ")";
 }
 
-struct SMatrix
+struct 
+SMatrix
 {
 	SMatrix() :
-		XAxis(1.f, 0.f, 0.f, 0.f),
-		YAxis(0.f, 1.f, 0.f, 0.f),
-		ZAxis(0.f, 0.f, 1.f, 0.f),
-		Trans(0.f, 0.f, 0.f, 1.f)
+		axes(
+			float4(1.f, 0.f, 0.f, 0.f),
+			float4(0.f, 1.f, 0.f, 0.f),
+			float4(0.f, 0.f, 1.f, 0.f),
+			float4(0.f, 0.f, 0.f, 1.f)
+		)
 	{
 	}
 
 	SMatrix(SMatrix43 p_Other) :
-		XAxis(p_Other.XAxis.x, p_Other.XAxis.y, p_Other.XAxis.z, 0.f),
-		YAxis(p_Other.YAxis.x, p_Other.YAxis.y, p_Other.YAxis.z, 0.f),
-		ZAxis(p_Other.ZAxis.x, p_Other.ZAxis.y, p_Other.ZAxis.z, 0.f),
-		Trans(p_Other.Trans.x, p_Other.Trans.y, p_Other.Trans.z, 1.f)
+		axes(
+			float4(p_Other.XAxis.x, p_Other.XAxis.y, p_Other.XAxis.z, 0.f),
+			float4(p_Other.YAxis.x, p_Other.YAxis.y, p_Other.YAxis.z, 0.f),
+			float4(p_Other.ZAxis.x, p_Other.ZAxis.y, p_Other.ZAxis.z, 0.f),
+			float4(p_Other.Trans.x, p_Other.Trans.y, p_Other.Trans.z, 1.f)
+		)
 	{
 	}
 
 	SMatrix(DirectX::XMMATRIX p_Other) :
-		XAxis(p_Other.r[0]),
-		YAxis(p_Other.r[1]),
-		ZAxis(p_Other.r[2]),
-		Trans(p_Other.r[3])
+		axes(p_Other.r[0], p_Other.r[1], p_Other.r[2], p_Other.r[3])
 	{
 	}
 
 	SMatrix(SMatrix44 p_Other) :
-		XAxis(p_Other.m11, p_Other.m12, p_Other.m13, p_Other.m14),
-		YAxis(p_Other.m21, p_Other.m22, p_Other.m23, p_Other.m24),
-		ZAxis(p_Other.m31, p_Other.m32, p_Other.m33, p_Other.m34),
-		Trans(p_Other.m41, p_Other.m42, p_Other.m43, p_Other.m44)
+		axes(
+			float4(p_Other.m11, p_Other.m12, p_Other.m13, p_Other.m14),
+			float4(p_Other.m21, p_Other.m22, p_Other.m23, p_Other.m24),
+			float4(p_Other.m31, p_Other.m32, p_Other.m33, p_Other.m34),
+			float4(p_Other.m41, p_Other.m42, p_Other.m43, p_Other.m44)
+		)
 	{
 	}
 
 	explicit operator DirectX::XMMATRIX() const
 	{
-		return DirectX::XMMATRIX(XAxis.m, YAxis.m, ZAxis.m, Trans.m);
+		return DirectX::XMMATRIX(axes.XAxis.m, axes.YAxis.m, axes.ZAxis.m, axes.Trans.m);
 	}
 
 	float4 operator*(const float4& p_Other) const
 	{
-		const auto s_XAxis = XAxis * p_Other.x;
-		const auto s_YAxis = YAxis * p_Other.y;
-		const auto s_ZAxis = ZAxis * p_Other.z;
-		const auto s_Trans = Trans * p_Other.w;
+		const auto s_XAxis = axes.XAxis * p_Other.x;
+		const auto s_YAxis = axes.YAxis * p_Other.y;
+		const auto s_ZAxis = axes.ZAxis * p_Other.z;
+		const auto s_Trans = axes.Trans * p_Other.w;
 
 		return {
 			s_XAxis.x + s_YAxis.x + s_ZAxis.x + s_Trans.x,
@@ -259,13 +263,13 @@ struct SMatrix
 			float4 YAxis;
 			float4 ZAxis;
 			float4 Trans;
-		};
+		} axes;
 	};
 };
 
 inline std::ostream& operator<<(std::ostream& p_Stream, const SMatrix& p_Value)
 {
-	return p_Stream << "[ " << p_Value.XAxis << ", " << p_Value.YAxis << ", " << p_Value.ZAxis << ", " << p_Value.Trans << " ]";
+	return p_Stream << "[ " << p_Value.axes.XAxis << ", " << p_Value.axes.YAxis << ", " << p_Value.axes.ZAxis << ", " << p_Value.axes.Trans << " ]";
 }
 
 

@@ -16,3 +16,7 @@
 [submodule "External/vcpkg"]
 	path = External/vcpkg
 	url = https://github.com/microsoft/vcpkg.git
+[submodule "External/buttplug-cpp"]
+	path = Mods/PlugAndEliminate/External/buttplug-cpp
+	url = git@ssh.git.cbps.xyz:olebeck/bpcpp.git
+

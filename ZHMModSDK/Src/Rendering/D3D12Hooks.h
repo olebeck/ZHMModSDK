@@ -15,7 +15,7 @@
 #define DEFINE_D3D12_HOOK(ThisType, FuncName) \
 	D3D12Hooks::ThisType ## _ ## FuncName ## _t D3D12Hooks::Original_ ## ThisType ## _ ## FuncName = nullptr;
 
-#define INSTALL_D3D12_HOOK(ThisType, FuncName) InstallHook(s_VTables->ThisType ## Vtbl, static_cast<int>(D3D12Hooks::Function::ThisType ## _ ## FuncName), Detour_ ## ThisType ## _ ## FuncName, reinterpret_cast<void**>(&Original_ ## ThisType ## _ ## FuncName));
+#define INSTALL_D3D12_HOOK(ThisType, FuncName) InstallHook(s_VTables->ThisType ## Vtbl, static_cast<int>(D3D12Hooks::Function::ThisType ## _ ## FuncName), (void*)Detour_ ## ThisType ## _ ## FuncName, reinterpret_cast<void**>(&Original_ ## ThisType ## _ ## FuncName));
 
 namespace Rendering
 {

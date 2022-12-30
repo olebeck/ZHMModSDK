@@ -13,8 +13,19 @@ add_library(imgui STATIC
 	source/imgui_demo.cpp
 	source/backends/imgui_impl_dx12.cpp
 	source/backends/imgui_impl_dx12.h
+	source/misc/cpp/imgui_stdlib.cpp
 )
 
 target_include_directories(imgui PUBLIC
-	${CMAKE_CURRENT_SOURCE_DIR}/source
+	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/source>
+	$<INSTALL_INTERFACE:source>
+)
+
+target_link_libraries(imgui
+	imm32.lib
+)
+
+install(TARGETS imgui
+	EXPORT imguiTargets
+	INCLUDES DESTINATION include
 )

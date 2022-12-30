@@ -1,0 +1,22 @@
+diff --git a/ports/directx-dxc/vcpkg.json b/ports/directx-dxc/vcpkg.json
+index 3f86fd8a38..01bf59cd03 100644
+--- a/ports/directx-dxc/vcpkg.json
++++ b/ports/directx-dxc/vcpkg.json
+@@ -5,5 +5,5 @@
+   "homepage": "https://github.com/microsoft/DirectXShaderCompiler",
+   "documentation": "https://github.com/microsoft/DirectXShaderCompiler/wiki",
+   "license": null,
+-  "supports": "windows & (x64 | arm64) & !uwp & !staticcrt"
++  "supports": "linux | (windows & (x64 | arm64) & !uwp & !staticcrt)"
+ }
+diff --git a/ports/xaudio2redist/vcpkg.json b/ports/xaudio2redist/vcpkg.json
+index 43388c7773..a3614d1087 100644
+--- a/ports/xaudio2redist/vcpkg.json
++++ b/ports/xaudio2redist/vcpkg.json
+@@ -5,5 +5,5 @@
+   "homepage": "https://aka.ms/XAudio2Redist",
+   "documentation": "https://aka.ms/XAudio2Redist",
+   "license": null,
+-  "supports": "windows & !arm & !uwp & !staticcrt"
++  "supports": "linux | (windows & !arm & !uwp & !staticcrt)"
+ }

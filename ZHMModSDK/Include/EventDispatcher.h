@@ -73,13 +73,13 @@ public:
 
 	EventListener_t AddListener(void* p_Context, EventListener_t p_Listener)
 	{
-		AddListenerInternal(p_Context, p_Listener);
+		AddListenerInternal(p_Context, (void*)p_Listener);
 		return p_Listener;
 	}
 
 	void RemoveListener(EventListener_t p_Listener)
 	{
-		RemoveListenerInternal(p_Listener);
+		RemoveListenerInternal((void*)p_Listener);
 	}
 
 	void Call()
@@ -92,7 +92,7 @@ public:
 
 		while (s_Registration != nullptr)
 		{
-			const auto s_Listener = static_cast<EventListener_t>(s_Registration->Listener);
+			const auto s_Listener = reinterpret_cast<EventListener_t>(s_Registration->Listener);
 			s_Listener(s_Registration->Context);
 			s_Registration = *++s_Registrations;
 		}
