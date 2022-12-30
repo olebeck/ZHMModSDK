@@ -56,6 +56,10 @@ target_link_libraries(DiscordSdk PUBLIC
 )
 #### End Discord Game SDK
 
+target_compile_options(DiscordSdk
+	PRIVATE -include cstdint
+)
+
 file(GLOB_RECURSE SRC_FILES
 	CONFIGURE_DEPENDS
 	Src/*.cpp
