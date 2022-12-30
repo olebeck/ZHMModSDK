@@ -1,8 +1,13 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 82d932f0..5250219f 100644
+index 82d932f0..cad2439b 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -213,12 +213,15 @@ if (NOT USE_PREBUILT_SHADERS)
+@@ -209,16 +209,19 @@ endif()
+ if (NOT USE_PREBUILT_SHADERS)
+     if (BUILD_DXIL_SHADERS AND VCPKG_TOOLCHAIN)
+         message("INFO: Using VCPKG for DirectXShaderCompiler (${VCPKG_HOST_TRIPLET}).")
+-        find_program(DIRECTX_DXC_TOOL DXC.EXE
++        find_program(DIRECTX_DXC_TOOL dxc.exe
            REQUIRED NO_SYSTEM_ENVIRONMENT_PATH NO_CMAKE_SYSTEM_PATH NO_DEFAULT_PATH
            HINTS ${DIRECTX_DXC_PATH})
      endif()

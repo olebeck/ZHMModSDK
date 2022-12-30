@@ -23,7 +23,7 @@ PRIVATE
 	${CMAKE_SOURCE_DIR}/External/mINI/src/mini
 PUBLIC
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Include>
-	$<INSTALL_INTERFACE:include>  # <prefix>/include/mylib
+	$<INSTALL_INTERFACE:include>
 )
 
 
