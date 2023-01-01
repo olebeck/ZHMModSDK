@@ -45,7 +45,7 @@ PUBLIC
 	imgui
 	d3dcompiler.lib
 	Microsoft::DirectXMath
-	spdlog_header_only
+	spdlog
 )
 
 
@@ -62,7 +62,7 @@ string(REGEX REPLACE "^v[0-9]+\\.[0-9]+\\.[0-9]+(.*)" "\\1" VERSION_SHA1 "${VERS
 set(VERSION_SHORT "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}")
 
 
-export(TARGETS ZHMModSDK spdlog_header_only imgui
+export(TARGETS ZHMModSDK spdlog imgui
 	NAMESPACE ZHMModSDK::
 	FILE ZHMModSDKTargets.cmake
 )
@@ -74,7 +74,7 @@ install(DIRECTORY Include/
 	DESTINATION "include"
 )
 
-install(TARGETS ZHMModSDK spdlog_header_only imgui
+install(TARGETS ZHMModSDK spdlog imgui
 	EXPORT ZHMModSDKTargets
 )
 
