@@ -4,7 +4,6 @@
 #include <minmax.h>
 #include <ostream>
 #include <cstring>
-#include <algorithm>
 
 #include <ZHMModSDK/Common.h>
 
@@ -64,7 +63,10 @@ public:
 
 	bool operator<(const ZString& p_Other) const
 	{
-		return strncmp(c_str(), p_Other.c_str(), std::min(size(), p_Other.size())) >> 31;
+		#ifdef __MINGW32__
+		using std::min;
+		#endif
+		return strncmp(c_str(), p_Other.c_str(), min(size(), p_Other.size())) >> 31;
 	}
 
 	bool operator==(const ZString& p_Other) const
