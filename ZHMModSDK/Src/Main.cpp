@@ -1,6 +1,6 @@
 #include <Windows.h>
 
-#include "Logging.h"
+#include <ZHMModSDK/Logging.h>
 #include "ModSDK.h"
 
 DWORD WINAPI StartupProc(LPVOID)

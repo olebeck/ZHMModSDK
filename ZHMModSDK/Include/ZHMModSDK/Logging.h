@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#include "Common.h"
+#include <ZHMModSDK/Common.h>
 
 #include "spdlog/logger.h"
 #include "spdlog/fmt/ostr.h"

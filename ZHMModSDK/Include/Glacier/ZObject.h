@@ -3,7 +3,7 @@
 #include "Reflection.h"
 #include "ZTypeRegistry.h"
 #include "ZMemory.h"
-#include "Globals.h"
+#include <ZHMModSDK/Globals.h>
 
 #include <cassert>
 

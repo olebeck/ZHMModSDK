@@ -22,8 +22,10 @@ struct ZRayQueryOutput
 	PAD(0x58); // 0x48
 };
 
+#pragma GCC diagnostic ignored "-Winvalid-offsetof"
 static_assert(sizeof(ZRayQueryOutput) == 0xA0);
 static_assert(offsetof(ZRayQueryOutput, m_BlockingEntity) == 0x40);
+#pragma GCC diagnostic pop
 
 class ZCollisionManager : public IComponentInterface
 {

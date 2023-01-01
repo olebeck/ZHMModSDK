@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ZMemory.h"
-#include "Globals.h"
+#include <ZHMModSDK/Globals.h>
 
 class ZBuffer
 {

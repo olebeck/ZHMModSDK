@@ -215,5 +215,7 @@ public:
 	PAD(0x20);
 };
 
+#pragma GCC diagnostic ignored "-Winvalid-offsetof"
 static_assert(offsetof(ZStaticPhysicsAspect, m_pPhysicsObject) == 0x40);
 static_assert(sizeof(ZStaticPhysicsAspect) == 0x68);
+#pragma GCC diagnostic pop

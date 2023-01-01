@@ -5,8 +5,8 @@
 #include <string>
 #include <unordered_set>
 
-#include "IModSDK.h"
-#include "Hooks.h"
+#include <ZHMModSDK/IModSDK.h>
+#include <ZHMModSDK/Hooks.h>
 #include "Glacier/ZEntity.h"
 
 namespace Rendering

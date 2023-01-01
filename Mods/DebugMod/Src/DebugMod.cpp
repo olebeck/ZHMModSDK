@@ -1,7 +1,7 @@
 #include "DebugMod.h"
 
-#include "Hooks.h"
-#include "Logging.h"
+#include <ZHMModSDK/Hooks.h>
+#include <ZHMModSDK/Logging.h>
 
 #include <Glacier/ZScene.h>
 #include <Glacier/ZActor.h>
@@ -15,8 +15,8 @@
 #include <Glacier/ZHttp.h>
 #include <Glacier/ZPhysics.h>
 #include <Glacier/ZSetpieceEntity.h>
-#include <Functions.h>
-#include <Globals.h>
+#include <ZHMModSDK/Functions.h>
+#include <ZHMModSDK/Globals.h>
 
 #include <ImGuizmo.h>
 

@@ -214,9 +214,11 @@ public:
 	}
 };
 
+#pragma GCC diagnostic ignored "-Winvalid-offsetof"
 static_assert(offsetof(ZActor, m_OutfitRepositoryID) == 0x420);
 static_assert(offsetof(ZActor, m_sActorName) == 0x488);
 static_assert(offsetof(ZActor, m_DomainConfig) == 0x4D0);
+#pragma GCC diagnostic pop
 
 class ZActorSavableHandler;
 

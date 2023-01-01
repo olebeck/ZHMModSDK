@@ -3,8 +3,8 @@
 #include <Windows.h>
 #include <d3d12.h>
 
-#include "Hook.h"
-#include "Common.h"
+#include <ZHMModSDK/Hook.h>
+#include <ZHMModSDK/Common.h>
 
 #include <Glacier/Enums.h>
 #include <Glacier/EUpdateMode.h>

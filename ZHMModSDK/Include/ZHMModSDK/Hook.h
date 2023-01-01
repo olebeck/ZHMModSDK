@@ -2,7 +2,7 @@
 
 #include <cassert>
 
-#include "Common.h"
+#include <ZHMModSDK/Common.h>
 
 class HookBase : public IDestructible
 {

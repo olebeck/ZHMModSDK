@@ -2,7 +2,7 @@
 
 #include <imgui.h>
 
-#include "IModSDK.h"
+#include <ZHMModSDK/IModSDK.h>
 
 using namespace UI;
 

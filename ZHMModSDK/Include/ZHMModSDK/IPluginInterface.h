@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Hooks.h"
-#include "IModSDK.h"
-#include "IRenderer.h"
+#include <ZHMModSDK/Hooks.h>
+#include <ZHMModSDK/IModSDK.h>
+#include <ZHMModSDK/IRenderer.h>
 
 class IPluginInterface
 {

@@ -3,7 +3,7 @@
 #include <d3d12.h>
 #include <dxgi1_4.h>
 
-#include "Hooks.h"
+#include <ZHMModSDK/Hooks.h>
 #include "Glacier/ZInput.h"
 
 struct ImFont;

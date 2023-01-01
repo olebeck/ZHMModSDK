@@ -4,8 +4,8 @@
 #include <Windows.h>
 #include <io.h>
 
-#include "Events.h"
-#include "Logging.h"
+#include <ZHMModSDK/Events.h>
+#include <ZHMModSDK/Logging.h>
 #include "ModSDK.h"
 #include "ModLoader.h"
 #include "spdlog/common.h"

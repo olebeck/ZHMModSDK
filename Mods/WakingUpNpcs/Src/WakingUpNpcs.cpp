@@ -2,9 +2,9 @@
 
 #include <random>
 
-#include "Events.h"
-#include "Functions.h"
-#include "Logging.h"
+#include <ZHMModSDK/Events.h>
+#include <ZHMModSDK/Functions.h>
+#include <ZHMModSDK/Logging.h>
 
 #include <Glacier/ZActor.h>
 #include <Glacier/ZKnowledge.h>

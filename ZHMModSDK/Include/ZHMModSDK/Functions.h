@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Common.h"
-#include "EngineFunction.h"
+#include <ZHMModSDK/Common.h>
+#include <ZHMModSDK/EngineFunction.h>
 #include "Glacier/ZEntity.h"
 #include "Glacier/ZPrimitives.h"
 

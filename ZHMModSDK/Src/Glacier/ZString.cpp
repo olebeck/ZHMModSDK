@@ -1,6 +1,6 @@
 #include <Glacier/ZString.h>
 
-#include "Globals.h"
+#include <ZHMModSDK/Globals.h>
 #include <Glacier/ZMemory.h>
 
 ZString::~ZString()

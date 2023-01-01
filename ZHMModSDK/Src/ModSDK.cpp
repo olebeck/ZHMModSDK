@@ -1,12 +1,12 @@
 #include "ModSDK.h"
 
-#include "Functions.h"
+#include <ZHMModSDK/Functions.h>
 #include "ModLoader.h"
-#include "Globals.h"
+#include <ZHMModSDK/Globals.h>
 #include "HookImpl.h"
-#include "Hooks.h"
-#include "Logging.h"
-#include "IPluginInterface.h"
+#include <ZHMModSDK/Hooks.h>
+#include <ZHMModSDK/Logging.h>
+#include <ZHMModSDK/IPluginInterface.h>
 #include "PinRegistry.h"
 #include "Util/ProcessUtils.h"
 

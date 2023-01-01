@@ -4,7 +4,7 @@
 #include <random>
 #include <unordered_map>
 
-#include "IPluginInterface.h"
+#include <ZHMModSDK/IPluginInterface.h>
 
 #include <Glacier/ZInput.h>
 #include <Glacier/ZEntity.h>

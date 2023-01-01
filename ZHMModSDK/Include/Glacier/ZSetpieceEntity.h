@@ -17,7 +17,9 @@ public:
 	PAD(0x10);
 };
 
+#pragma GCC diagnostic ignored "-Winvalid-offsetof"
 static_assert(offsetof(ZSetpieceEntity, m_sTypeId) == 0x18);
 static_assert(offsetof(ZSetpieceEntity, m_rSpatial) == 0x40);
 static_assert(offsetof(ZSetpieceEntity, m_rOriginal) == 0x50);
 static_assert(sizeof(ZSetpieceEntity) == 0x70);
+#pragma GCC diagnostic pop

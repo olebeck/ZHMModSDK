@@ -1,6 +1,6 @@
 #pragma once
 
-#include "EventDispatcher.h"
+#include <ZHMModSDK/EventDispatcher.h>
 
 #include <Windows.h>
 #include <vector>

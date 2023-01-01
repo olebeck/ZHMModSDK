@@ -1,4 +1,4 @@
-#include "Events.h"
+#include <ZHMModSDK/Events.h>
 
 #include "EventDispatcherImpl.h"
 

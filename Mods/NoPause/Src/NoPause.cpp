@@ -1,5 +1,5 @@
 #include "NoPause.h"
-#include "Logging.h"
+#include <ZHMModSDK/Logging.h>
 
 #include <Glacier/ZString.h>
 

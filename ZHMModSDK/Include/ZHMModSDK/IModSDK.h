@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Glacier/ZPrimitives.h"
-#include "Common.h"
+#include <ZHMModSDK/Common.h>
 #include "imgui.h"
 
 class SVector2;

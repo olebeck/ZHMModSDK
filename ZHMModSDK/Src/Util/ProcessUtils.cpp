@@ -4,7 +4,7 @@
 #include <Windows.h>
 #include <unordered_set>
 
-#include "Logging.h"
+#include <ZHMModSDK/Logging.h>
 
 using namespace Util;
 

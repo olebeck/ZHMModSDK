@@ -5,8 +5,8 @@
 
 #include "EventDispatcherImpl.h"
 #include "HookImpl.h"
-#include "IPluginInterface.h"
-#include "Logging.h"
+#include <ZHMModSDK/IPluginInterface.h>
+#include <ZHMModSDK/Logging.h>
 #include "Util/StringUtils.h"
 #include "UI/ModSelector.h"
 #include <ini.h>

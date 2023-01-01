@@ -4,7 +4,7 @@
 #include "TArray.h"
 #include "Reflection.h"
 #include "ZObject.h"
-#include "Hooks.h"
+#include <ZHMModSDK/Hooks.h>
 
 class ZEntityType;
 class ZActor;

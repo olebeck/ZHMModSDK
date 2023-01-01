@@ -1,4 +1,4 @@
-#include "Functions.h"
+#include <ZHMModSDK/Functions.h>
 #include "EngineFunctionImpl.h"
 
 PATTERN_FUNCTION(

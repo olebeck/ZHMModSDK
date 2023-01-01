@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Common.h"
-#include "Hooks.h"
+#include <ZHMModSDK/Common.h>
+#include <ZHMModSDK/Hooks.h>
 
 class ZUpdateEventContainer;
 

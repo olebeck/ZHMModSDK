@@ -1,8 +1,8 @@
 #pragma once
 
-#include "EngineFunction.h"
+#include <ZHMModSDK/EngineFunction.h>
 #include "ModSDK.h"
-#include "Logging.h"
+#include <ZHMModSDK/Logging.h>
 #include "Util/ProcessUtils.h"
 
 template <class T>

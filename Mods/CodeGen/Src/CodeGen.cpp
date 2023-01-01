@@ -1,11 +1,11 @@
 #include "CodeGen.h"
-#include "Logging.h"
+#include <ZHMModSDK/Logging.h>
 
 #include <Glacier/ZString.h>
 #include <Glacier/ZTypeRegistry.h>
 #include <Glacier/Reflection.h>
 
-#include "Globals.h"
+#include <ZHMModSDK/Globals.h>
 
 #include <sstream>
 #include <iostream>

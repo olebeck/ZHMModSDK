@@ -3,7 +3,7 @@
 #include <random>
 #include <unordered_map>
 
-#include "IPluginInterface.h"
+#include <ZHMModSDK/IPluginInterface.h>
 
 class CertPinBypass : public IPluginInterface
 {

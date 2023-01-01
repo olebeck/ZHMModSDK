@@ -5,7 +5,7 @@
 #include <ostream>
 #include <cstring>
 
-#include "Common.h"
+#include <ZHMModSDK/Common.h>
 
 class ZString
 {

@@ -1,4 +1,4 @@
-#include "Hooks.h"
+#include <ZHMModSDK/Hooks.h>
 #include "HookImpl.h"
 
 #include <Glacier/ZEntity.h>

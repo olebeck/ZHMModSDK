@@ -464,6 +464,7 @@ public:
 	PAD(0x98); // 0x1178
 };
 
+#pragma GCC diagnostic ignored "-Winvalid-offsetof"
 static_assert(offsetof(ZHitman5, m_InitialOutfitId) == 0x710);
 static_assert(offsetof(ZHitman5, m_CharacterId) == 0x7A8);
 static_assert(offsetof(ZHitman5, m_pVRHeadReplacement) == 0x830);
@@ -472,3 +473,4 @@ static_assert(offsetof(ZHitman5, m_pCharacter) == 0xDA0);
 static_assert(offsetof(ZHitman5, m_flags) == 0x1148);
 static_assert(offsetof(ZHitman5, m_rMainCamera) == 0x1168);
 static_assert(sizeof(ZHitman5) == 0x1210);
+#pragma GCC diagnostic pop

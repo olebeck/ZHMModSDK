@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Globals.h"
-#include "Functions.h"
+#include <ZHMModSDK/Globals.h>
+#include <ZHMModSDK/Functions.h>
 #include "ZPrimitives.h"
 
 class ZRuntimeResourceID;

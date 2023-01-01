@@ -57,9 +57,11 @@ public:
 	PAD(0x20);
 };
 
+#pragma GCC diagnostic ignored "-Winvalid-offsetof"
 static_assert(offsetof(ZSpatialEntity, m_mTransform) == 0x20);
 static_assert(offsetof(ZSpatialEntity, m_nUnknownFlags) == 0x6C);
 static_assert(sizeof(ZSpatialEntity) == 0xA0);
+#pragma GCC diagnostic pop
 
 class ZBoundedEntity :
 	public ZSpatialEntity

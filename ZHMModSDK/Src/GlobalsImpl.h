@@ -4,7 +4,7 @@
 
 #include "ModSDK.h"
 #include "Util/ProcessUtils.h"
-#include "Logging.h"
+#include <ZHMModSDK/Logging.h>
 
 template <class T>
 T PatternGlobalRelative(const char* p_GlobalName, const char* p_Pattern, const char* p_Mask, ptrdiff_t p_Offset)

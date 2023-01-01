@@ -5,7 +5,7 @@
 #include <string>
 #include <fstream>
 
-#include "IPluginInterface.h"
+#include <ZHMModSDK/IPluginInterface.h>
 
 class STypeID;
 

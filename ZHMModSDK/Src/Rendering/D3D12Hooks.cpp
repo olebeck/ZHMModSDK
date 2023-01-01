@@ -7,7 +7,7 @@
 
 
 #include "D3DUtils.h"
-#include "Logging.h"
+#include <ZHMModSDK/Logging.h>
 #include "MinHook.h"
 #include "ModSDK.h"
 #include "Renderers/DirectXTKRenderer.h"

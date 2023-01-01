@@ -1,7 +1,7 @@
 #pragma once
 
-#include "EventDispatcher.h"
-#include "Common.h"
+#include <ZHMModSDK/EventDispatcher.h>
+#include <ZHMModSDK/Common.h>
 
 class ZHMSDK_API Events
 {

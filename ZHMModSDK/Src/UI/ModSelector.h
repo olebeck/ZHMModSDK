@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Common.h"
+#include <ZHMModSDK/Common.h>
 #include <unordered_set>
 #include <string>
 #include <vector>

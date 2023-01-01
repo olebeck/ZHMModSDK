@@ -9,8 +9,8 @@
 #include <imgui.h>
 #include <backends/imgui_impl_dx12.h>
 
-#include "Hooks.h"
-#include "Logging.h"
+#include <ZHMModSDK/Hooks.h>
+#include <ZHMModSDK/Logging.h>
 
 #include <Glacier/ZApplicationEngineWin32.h>
 
@@ -20,7 +20,7 @@
 
 #include "Rendering/D3DUtils.h"
 #include "Fonts.h"
-#include "Globals.h"
+#include <ZHMModSDK/Globals.h>
 #include "HookImpl.h"
 #include "ModSDK.h"
 #include "Glacier/ZRender.h"

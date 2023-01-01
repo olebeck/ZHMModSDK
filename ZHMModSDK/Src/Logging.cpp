@@ -1,4 +1,4 @@
-#include "Logging.h"
+#include <ZHMModSDK/Logging.h>
 
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/dist_sink.h"

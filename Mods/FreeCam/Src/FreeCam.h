@@ -2,7 +2,7 @@
 
 #include <unordered_map>
 
-#include "IPluginInterface.h"
+#include <ZHMModSDK/IPluginInterface.h>
 
 #include <Glacier/ZEntity.h>
 #include <Glacier/ZInput.h>

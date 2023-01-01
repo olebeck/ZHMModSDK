@@ -1,4 +1,4 @@
-#include "Globals.h"
+#include <ZHMModSDK/Globals.h>
 #include "GlobalsImpl.h"
 
 PATTERN_RELATIVE_GLOBAL(

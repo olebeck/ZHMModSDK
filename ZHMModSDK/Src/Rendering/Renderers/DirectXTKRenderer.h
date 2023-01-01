@@ -12,8 +12,8 @@
 #include "SimpleMath.h"
 #include "SpriteBatch.h"
 #include "VertexTypes.h"
-#include "Hooks.h"
-#include "IRenderer.h"
+#include <ZHMModSDK/Hooks.h>
+#include <ZHMModSDK/IRenderer.h>
 #include "SpriteFont.h"
 
 class SGameUpdateEvent;

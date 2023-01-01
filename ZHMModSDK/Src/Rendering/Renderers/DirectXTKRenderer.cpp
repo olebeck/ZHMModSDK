@@ -4,8 +4,8 @@
 #include <dxgi1_4.h>
 #include <d3d12.h>
 
-#include "Hooks.h"
-#include "Logging.h"
+#include <ZHMModSDK/Hooks.h>
+#include <ZHMModSDK/Logging.h>
 
 #include <Glacier/ZApplicationEngineWin32.h>
 #include <Glacier/ZDelegate.h>
@@ -15,8 +15,8 @@
 #include "CommonStates.h"
 #include "ResourceUploadBatch.h"
 #include "DirectXHelpers.h"
-#include "Functions.h"
-#include "Globals.h"
+#include <ZHMModSDK/Functions.h>
+#include <ZHMModSDK/Globals.h>
 #include "Glacier/ZEntity.h"
 #include "Glacier/ZActor.h"
 #include "Glacier/ZRender.h"

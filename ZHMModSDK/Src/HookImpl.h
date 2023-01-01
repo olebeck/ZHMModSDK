@@ -6,9 +6,9 @@
 
 #include "ModSDK.h"
 #include <MinHook.h>
-#include "Hook.h"
+#include <ZHMModSDK/Hook.h>
 #include "Util/ProcessUtils.h"
-#include "Logging.h"
+#include <ZHMModSDK/Logging.h>
 
 #define MAX_TRAMPOLINES 4096
 

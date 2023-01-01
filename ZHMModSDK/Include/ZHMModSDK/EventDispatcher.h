@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Common.h"
+#include <ZHMModSDK/Common.h>
 
 class EventDispatcherBase : public IDestructible
 {

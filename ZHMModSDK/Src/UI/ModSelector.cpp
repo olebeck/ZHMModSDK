@@ -1,7 +1,7 @@
 #include "ModSelector.h"
 
 #include "imgui.h"
-#include "IModSDK.h"
+#include <ZHMModSDK/IModSDK.h>
 #include "ModSDK.h"
 #include "ModLoader.h"
 #include "Util/StringUtils.h"
