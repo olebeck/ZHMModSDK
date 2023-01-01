@@ -22,6 +22,7 @@
 
 #include <winhttp.h>
 #include <numbers>
+#include <algorithm>
 
 DebugMod::~DebugMod()
 {

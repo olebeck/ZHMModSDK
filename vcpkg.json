@@ -7,9 +7,6 @@
       "host": true
     },
     "directxmath",
-    "xaudio2redist",
-    "websocketpp",
-    "nlohmann-json",
-    "asio"
+    "xaudio2redist"
   ]
 }

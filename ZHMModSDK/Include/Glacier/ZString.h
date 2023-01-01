@@ -4,6 +4,7 @@
 #include <minmax.h>
 #include <ostream>
 #include <cstring>
+#include <algorithm>
 
 #include <ZHMModSDK/Common.h>
 
