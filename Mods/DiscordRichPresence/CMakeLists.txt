@@ -56,9 +56,11 @@ target_link_libraries(DiscordSdk PUBLIC
 )
 #### End Discord Game SDK
 
+if(MINGW)
 target_compile_options(DiscordSdk
 	PRIVATE -include cstdint
 )
+endif()
 
 file(GLOB_RECURSE SRC_FILES
 	CONFIGURE_DEPENDS
