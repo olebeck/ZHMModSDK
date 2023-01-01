@@ -102,8 +102,13 @@ void DirectXTKRenderer::OnPresent(IDXGISwapChain3* p_SwapChain)
 		const auto s_ViewMatrix = s_CurrentCamera->GetViewMatrix();
 		const SMatrix s_ProjectionMatrix = *s_CurrentCamera->GetProjectionMatrix();
 
+		#ifdef __MINGW32__
 		m_View = reinterpret_cast<DirectX::FXMMATRIX>(s_ViewMatrix);
 		m_Projection = reinterpret_cast<DirectX::FXMMATRIX>(s_ProjectionMatrix);
+		#else
+		m_View = *reinterpret_cast<DirectX::FXMMATRIX*>(&s_ViewMatrix);
+		m_Projection = *reinterpret_cast<DirectX::FXMMATRIX*>(&s_ProjectionMatrix);
+		#endif
 
 		m_ViewProjection = m_View * m_Projection;
 		m_ProjectionViewInverse = (m_Projection * m_View).Invert();
@@ -591,7 +596,11 @@ inline SVector3 XMVecToSVec3(const DirectX::XMVECTOR& p_Vec)
 
 void DirectXTKRenderer::DrawOBB3D(const SVector3& p_Min, const SVector3& p_Max, const SMatrix& p_Transform, const SVector4& p_Color)
 {
+	#ifdef __MINGW32__
 	const auto s_Transform = reinterpret_cast<DirectX::FXMMATRIX>(p_Transform);
+	#else
+	const auto s_Transform = *reinterpret_cast<DirectX::FXMMATRIX*>(&p_Transform);
+	#endif
 
 	DirectX::XMVECTOR s_Corners[] = {
 		DirectX::XMVector3Transform(DirectX::SimpleMath::Vector3(p_Min.x, p_Min.y, p_Min.z), s_Transform),
